@@ -1,0 +1,1 @@
+# Contar el número de vocales en una palabra dada con búcle for y condiciones

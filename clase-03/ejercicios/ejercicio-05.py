@@ -1,0 +1,1 @@
+# Suma de los números pares dentro de un rango dado con búcle for

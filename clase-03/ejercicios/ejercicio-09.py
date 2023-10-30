@@ -1,0 +1,1 @@
+# Imprimir un patrón de asteriscos con búcle for

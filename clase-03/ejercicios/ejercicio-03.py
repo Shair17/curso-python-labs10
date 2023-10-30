@@ -1,0 +1,1 @@
+# Mostrar los caracteres de la cadena "Hola Mundo desde Labs10"

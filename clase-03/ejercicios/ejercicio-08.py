@@ -1,0 +1,1 @@
+# Comprobar si un número es primo o no con búcle for y condiciones
