@@ -37,3 +37,52 @@ print(primera_letra_en_mayuscula("hola y bienvenidos a la clase de python en lab
 # Crear una función para determinar si un número es primo
 # Crear una función para obtener el factorial de un número
 # Crear una función para determinar si una cadena de texto es palíndromo
+
+def es_primo(numero: int) -> bool:
+  if numero <= 1:
+    return False
+
+  for i in range(2, int((numero) ** 0.5) + 1):
+    if numero % i == 0:
+      return False
+
+  return True
+
+
+numero_para_evaluar_si_es_primo = 17
+resultado_es_primo = es_primo(numero_para_evaluar_si_es_primo)
+if (resultado_es_primo):
+  print("El número " + str(numero_para_evaluar_si_es_primo) + " es primo")
+else:
+  print("El número " + str(numero_para_evaluar_si_es_primo) + " no es primo")
+
+
+def factorial(numero: int) -> float:
+  if numero == 0 or numero == 1:
+    return 1
+  
+  return numero * factorial(numero - 1)
+
+
+factorial_numero = 5
+resultado_factorial = factorial(factorial_numero)
+
+print(f"El factorial de {factorial_numero} es {resultado_factorial}")
+
+
+def es_palindromo(cadena: str) -> bool:
+  cadena = cadena.lower().replace(" ", "")
+
+  return cadena == cadena[::-1]
+
+cadena = "Anita lava la tina"
+cadena_es_palindroma = es_palindromo(cadena)
+
+if (cadena_es_palindroma):
+  print(f"la cadena {cadena} es palindroma")
+else:
+  print(f"la cadena {cadena} no es palindroma")
+
+def mostrar_saludo():
+  print(__name__)
+  print("Hola desde funciones.py")
