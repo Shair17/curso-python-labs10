@@ -1,9 +1,9 @@
 class MiClase:
-    def __init__(self):
-        print("Se ha creado un objeto")
-    
-    def __del__(self):
-        print("Se ha destruido un objeto")
+  def __init__(self):
+    print("Se ha creado un objeto")
+
+  def __del__(self):
+    print("Se ha destruido un objeto")
 
 objeto1 = MiClase()
 objeto2 = MiClase()
