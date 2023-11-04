@@ -1,18 +1,22 @@
+# Polimorfismo
+# Poli -> varios
+# morfismo -> formas
+
 class Animal:
-    def hacer_sonido(self):
-        pass
+  def hacer_sonido(self):
+    pass
 
 class Perro(Animal):
-    def hacer_sonido(self):
-        return "Guau"
+  def hacer_sonido(self):
+    return "Guau"
 
 class Gato(Animal):
-    def hacer_sonido(self):
-        return "Miau"
+  def hacer_sonido(self):
+    return "Miau"
 
 # Función polimórfica
-def hacer_sonar(animal):
-    return animal.hacer_sonido()
+def hacer_sonar(animal: Animal):
+  return animal.hacer_sonido()
 
 # Crear instancias de diferentes clases
 perro = Perro()
