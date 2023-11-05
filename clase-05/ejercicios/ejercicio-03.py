@@ -1,0 +1,1 @@
+# Crear un sistema de gestión de productos, tener en cuenta todas las clases para realizar una abstracción correcta.
