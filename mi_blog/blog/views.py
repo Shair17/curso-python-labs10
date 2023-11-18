@@ -8,9 +8,3 @@ def my_posts(request):
 
 def account(request):
   return render(request, 'blog/account.html')
-
-def login(request):
-  return render(request, 'blog/login.html')
-
-def register(request):
-  return render(request, 'blog/register.html')
