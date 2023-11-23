@@ -32,10 +32,7 @@
               <a class="nav-link active" aria-current="page" href="/">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/my-posts">Mis Publicaciones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/account">Mi cuenta</a>
+              <a class="nav-link" href="{% url 'featured' %}">Publicaciones</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -50,9 +47,34 @@
             </button>
           </form>
 
-          <div role="group" style="margin-left: 20px">
-            <a href="/login" class="btn btn-primary">Inicia sesión</a>
-            <a href="/register" class="btn btn-primary">Regístrate</a>
+          <div
+            role="group"
+            style="
+              margin-left: 20px;
+              display: flex;
+              flex-direction: row;
+              gap: 10px;
+            "
+          >
+            {% if request.user.is_authenticated %}
+            <li class="nav-link">
+              <a class="btn btn-danger" href="{% url 'logout' %}"
+                >Cerrar sesión</a
+              >
+            </li>
+
+            {% else %}
+            <li class="nav-link">
+              <a href="{% url 'login' %}" class="btn btn-primary"
+                >Inicia sesión</a
+              >
+            </li>
+            <li class="nav-link">
+              <a href="{% url 'register' %}" class="btn btn-primary"
+                >Regístrate</a
+              >
+            </li>
+            {% endif %}
           </div>
         </div>
       </div>
