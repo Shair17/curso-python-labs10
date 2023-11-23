@@ -1,11 +1,11 @@
 from django.urls import path, include
-from . import views
+from .views import Index, DetailPostView, LikePost, Featured, DeletePostView
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
-    path('', views.home, name='index'),
-    # path('login/', views.login, name='login'),
-    # path('register/', views.register, name='register'),
-    path('account/', views.account, name='account'),
-    path('my-posts/', views.my_posts, name='my-posts'),
+    path('', Index.as_view(), name='index'),
+    path('<int:pk>/', DetailPostView.as_view(), name='detail_post'),
+    path('<int:pk>/like', LikePost.as_view(), name='like_post'),
+    path('featured/', Featured.as_view(), name='Featured'),
+    path('<int:pk>/delete', DeletePostView.as_view(), name='delete_post')
 ]

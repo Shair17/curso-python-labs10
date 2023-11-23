@@ -1,94 +1,28 @@
 {% extends 'blog/base.html' %} {% block content %}
-<div class="grid gap-3 card p-4">
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
+<div class="row">
+  <div class="col-md-6 col-12 mx-md-auto mx-3 my-5">
+    <h1 class="fw-bolder">Proyecto de Blog</h1>
+    <p class="text-muted">Un blog hecho con Python y Django</p>
+  </div>
+
+  {% for object in object_list %}
+  <div class="row">
+    <div class="col-md-6 col-11 mx-md-auto mx-3 my-5">
+      <h3 class="fw-bold">{{ object.title }}</h3>
+      <p class="text-muted">{{ object.date }}</p>
+      <p class="text-muted">Publicado por {{ object.author.username }}</p>
+      {% if object.likes.count == 1 %}
+      <p class="text-muted">{{ object.likes.count }} like</p>
+      {% else %}
+      <p class="text-muted">{{ object.likes.count }} likes</p>
+      {% endif %}
+      <div class="my-3">{{object.content|truncatewords_html:50|safe}}</div>
+
+      <a href="{% url 'detail_post' object.id %}" class="btn btn-primary"
+        >Leer más</a
+      >
     </div>
   </div>
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
-    </div>
-  </div>
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
-    </div>
-  </div>
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
-    </div>
-  </div>
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
-    </div>
-  </div>
-  <div class="p-2 g-col-12">
-    <div class="card">
-      <img
-        src="https://picsum.photos/1280/720"
-        class="card-img-top"
-        style="object-fit: contain; height: 400px"
-        alt="Imagen de publicación"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Título</h5>
-        <p class="card-text">Esta es la descripción de la publicación.</p>
-        <a href="#" class="btn btn-primary">Ir a la publicación</a>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 {% endblock content %}
