@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div class="row">
   <div class="col-md-4 col-12 mx-md-5 mx-2 mt-md-3 my-3">
-    <a href="{% url 'index' %}">Regresar</a>
+    <a class="btn btn-outline-secondary" href="{% url 'index' %}">Ir atrás</a>
   </div>
 </div>
 
@@ -9,11 +9,11 @@
   <div class="col-md-6 col-11 mx-md-auto mb-3 pb-2 mx-3">
     <h1>{{ object.title }}</h1>
     <p class="text-muted">{{ object.date }}</p>
-    <p class="text-muted">{{ object.author.username }}</p>
+    <p class="text-muted">Publicado por {{ object.author.username }}</p>
 
     {% if request.user.username == object.author.username %}
     <div class="pb-3">
-      <a href="{% url 'delete_post' object.pk %}">Eliminar esta publicación</a>
+      <a href="{% url 'delete_Post' object.pk %}">Eliminar esta publicación</a>
     </div>
     {% endif %}
 
@@ -28,22 +28,19 @@
     {% else %}
     <p class="text-muted">{{ object.likes.count }} likes</p>
     {% endif %} {% if request.user.is_authenticated %} {% if liked_by_user %}
-    <form method="POST" action="{% url 'like_post' object.id %}">
+    <form method="POST" action="{% url 'like_Post' object.id %}">
       {% csrf_token %}
       <button class="btn btn-outline-primary">Ya no me gusta este post</button>
     </form>
     {% else %}
-    <form method="POST" action="{% url 'like_post' object.id %}">
+    <form method="POST" action="{% url 'like_Post' object.id %}">
       {% csrf_token %}
       <button class="btn btn-outline-primary">Me gusta este post</button>
     </form>
-
     {% endif %} {% else %}
-
-    <a href="{% url 'login' %}" class="btn btn-primary"
-      >Inicia sesión para dar like</a
-    >
-
+    <a href="{% url 'login' %}" class="btn btn-outline-primary">
+      Inicia sesión para dar like
+    </a>
     {% endif %}
   </div>
 </div>
