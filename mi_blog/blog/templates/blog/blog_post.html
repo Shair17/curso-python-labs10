@@ -13,7 +13,7 @@
 
     {% if request.user.username == object.author.username %}
     <div class="pb-3">
-      <a href="{% url 'delete_Post' object.pk %}">Eliminar esta publicación</a>
+      <a href="{% url 'delete_post' object.pk %}">Eliminar esta publicación</a>
     </div>
     {% endif %}
 
@@ -28,14 +28,16 @@
     {% else %}
     <p class="text-muted">{{ object.likes.count }} likes</p>
     {% endif %} {% if request.user.is_authenticated %} {% if liked_by_user %}
-    <form method="POST" action="{% url 'like_Post' object.id %}">
+    <form method="POST" action="{% url 'like_post' object.id %}">
       {% csrf_token %}
-      <button class="btn btn-outline-primary">Ya no me gusta este post</button>
+      <button class="btn btn-outline-primary">
+        Ya no me gusta esta publicación
+      </button>
     </form>
     {% else %}
-    <form method="POST" action="{% url 'like_Post' object.id %}">
+    <form method="POST" action="{% url 'like_post' object.id %}">
       {% csrf_token %}
-      <button class="btn btn-outline-primary">Me gusta este post</button>
+      <button class="btn btn-outline-primary">Me gusta esta publicación</button>
     </form>
     {% endif %} {% else %}
     <a href="{% url 'login' %}" class="btn btn-outline-primary">

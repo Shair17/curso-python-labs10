@@ -27,22 +27,22 @@ class DetailPostView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(DetailPostView, self).get_context_data(*args, **kwargs)
         context['liked_by_user'] = False
-        Post = Post.objects.get(id=self.kwargs.get('pk'))
-        if Post.likes.filter(pk=self.request.user.id).exists():
+        post = Post.objects.get(id=self.kwargs.get('pk'))
+        if post.likes.filter(pk=self.request.user.id).exists():
             context['liked_by_user'] = True
         return context
 
 
 class LikePost(View):
     def post(self, request, pk):
-        Post = Post.objects.get(id=pk)
-        if Post.likes.filter(pk=self.request.user.id).exists():
-            Post.likes.remove(request.user.id)
+        post = Post.objects.get(id=pk)
+        if post.likes.filter(pk=self.request.user.id).exists():
+            post.likes.remove(request.user.id)
         else:
-            Post.likes.add(request.user.id)
+            post.likes.add(request.user.id)
 
-        Post.save()
-        return redirect('detail_Post', pk)
+        post.save()
+        return redirect('detail_post', pk)
 
 
 class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -51,5 +51,5 @@ class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy('index')
 
     def test_func(self):
-        Post = Post.objects.get(id=self.kwargs.get('pk'))
-        return self.request.user.id == Post.author.id
+        post = Post.objects.get(id=self.kwargs.get('pk'))
+        return self.request.user.id == post.author.id

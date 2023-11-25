@@ -20,7 +20,7 @@
 
     <div class="my-3">{{ object.content|truncatewords_html:50|safe }}</div>
 
-    <a href="{% url 'detail_Post' object.id %}">Leer más</a>
+    <a href="{% url 'detail_post' object.id %}">Leer más</a>
   </div>
 </div>
 {% endfor %}
